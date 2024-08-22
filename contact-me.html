@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - Full Stack Web Dev Academy</title>
+    <style>
+      /* General Styles */
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        color: white;
+        text-align: center;
+        padding: 100px 20px;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+
+      .hero-content p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+      }
+
+      .cta-button {
+        background: #ff6f61;
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 1.1em;
+        transition: background 0.3s ease;
+      }
+
+      .cta-button:hover {
+        background: #ff4f41;
+      }
+
+      /* About Section */
+      .about {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 60px 20px;
+        background-color: white;
+      }
+
+      .about-content {
+        max-width: 600px;
+      }
+
+      .about-content h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+
+      .about-content p {
+        font-size: 1.1em;
+        margin-bottom: 20px;
+      }
+
+      .about-content ul {
+        list-style-type: disc;
+        padding-left: 20px;
+        margin-bottom: 30px;
+      }
+
+      .learn-more-button {
+        background: transparent;
+        border: 2px solid #ff6f61;
+        padding: 10px 20px;
+        border-radius: 50px;
+        color: #ff6f61;
+        cursor: pointer;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+      }
+
+      .learn-more-button:hover {
+        background: #ff6f61;
+        color: white;
+      }
+
+      .about-image img {
+        max-width: 100%;
+        border-radius: 15px;
+      }
+
+      /* Courses Section */
+      .courses {
+        padding: 60px 20px;
+        background-color: #f4f4f4;
+        text-align: center;
+      }
+
+      .courses h2 {
+        font-size: 2em;
+        margin-bottom: 40px;
+      }
+
+      .course-cards {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+
+      .course-card {
+        background-color: white;
+        width: 250px;
+        height: 300px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        perspective: 1000px;
+        margin-bottom: 20px;
+        transition: transform 0.5s;
+      }
+
+      .course-card:hover {
+        transform: rotateY(180deg);
+      }
+
+      .card-front,
+      .card-back {
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+        backface-visibility: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      .card-front {
+        background: linear-gradient(to right, #ff6f61, #ff4f41);
+        color: white;
+      }
+
+      .card-back {
+        background-color: white;
+        color: #333;
+        transform: rotateY(180deg);
+      }
+
+      .course-card-container {
+        width: 250px;
+        height: 320px;
+      }
+
+      .curriculum-button {
+        background: #2575fc;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background 0.3s ease;
+      }
+
+      .curriculum-button:hover {
+        background: #1a5bd2;
+      }
+
+      /* Success Stories Section */
+      .success-stories {
+        background: url("assets/images/tech-workspace.jpg") no-repeat center
+          center/cover;
+        color: white;
+        text-align: center;
+        padding: 100px 20px;
+        position: relative;
+      }
+
+      .success-stories h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .success-stories p {
+        color: #333;
+        font-size: 1.2em;
+        margin-bottom: 50px;
+      }
+
+      .carousel {
+        display: flex;
+        justify-content: center;
+        overflow-x: auto;
+        gap: 20px;
+      }
+
+      .carousel-item {
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 20px;
+        border-radius: 15px;
+        min-width: 300px;
+        text-align: left;
+      }
+
+      .carousel-item p {
+        font-size: 1em;
+        margin-bottom: 10px;
+      }
+
+      .carousel-item span {
+        font-size: 0.9em;
+        color: #ff6f61;
+      }
+
+      /* Call to Action Section */
+      .cta {
+        background: linear-gradient(to right, #ff6f61, #ff4f41);
+        color: white;
+        text-align: center;
+        padding: 100px 20px;
+      }
+
+      .cta h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+
+      .cta-enroll {
+        background: white;
+        color: #ff6f61;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 1.1em;
+        transition: background 0.3s ease, color 0.3s ease;
+      }
+
+      .cta-enroll:hover {
+        background: #ff4f41;
+        color: white;
+      }
+
+      .cta p {
+        margin-top: 20px;
+        font-size: 1em;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        font-size: 0.9em;
+      }
+
+      /* Contact Section */
+      .contact {
+        background-color: white;
+        padding: 60px 20px;
+        text-align: center;
+      }
+
+      .contact h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+
+      .contact p {
+        font-size: 1.2em;
+        margin-bottom: 40px;
+      }
+
+      .contact-form-container {
+        display: flex;
+        justify-content: center;
+      }
+
+      form {
+        max-width: 600px;
+        width: 100%;
+        background-color: #f4f4f4;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+        text-align: left;
+      }
+
+      .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1em;
+      }
+
+      .submit-button {
+        background-color: #2575fc;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 1.1em;
+        transition: background 0.3s ease;
+      }
+
+      .submit-button:hover {
+        background-color: #1a5bd2;
+      }
+
+      /* About Us Section */
+      .about-us {
+        background-color: #f4f4f4;
+        padding: 60px 20px;
+        text-align: center;
+      }
+
+      .about-us h1 {
+        font-size: 2.5em;
+        margin-bottom: 40px;
+      }
+
+      .about-us-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .about-us-text {
+        max-width: 600px;
+        text-align: left;
+      }
+
+      .about-us-image img {
+        max-width: 100%;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      /* Error Page Section */
+      .error-page {
+        background-color: #ff4f41;
+        color: white;
+        text-align: center;
+        padding: 100px 20px;
+        height: 100vh;
+      }
+
+      .error-page h1 {
+        font-size: 6em;
+        margin-bottom: 20px;
+      }
+
+      .error-page p {
+        font-size: 1.5em;
+        margin-bottom: 40px;
+      }
+
+      .home-button {
+        background-color: white;
+        color: #ff4f41;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 1.2em;
+        text-decoration: none;
+        transition: background 0.3s ease, color 0.3s ease;
+      }
+
+      .home-button:hover {
+        background-color: #ff6f61;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Contact Section -->
+    <section class="contact">
+      <h1>Contact Us</h1>
+      <p>
+        We'd love to hear from you! Whether you have a question about our
+        courses, pricing, or anything else, our team is ready to answer all your
+        questions.
+      </p>
+      <div class="contact-form-container">
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea
+              style="resize: vertical"
+              id="message"
+              name="message"
+              rows="5"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="submit-button">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 Full Stack Web Dev Academy. All rights reserved.</p>
+    </footer>
+
+    <script>
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          alert("Thank you for your message! We will get back to you shortly.");
+          this.reset(); // Clears the form after submission
+        });
+    </script>
+  </body>
+</html>
